@@ -1,0 +1,220 @@
+/**
+ *    ░█▀▄░█▀█░█▀▀░▀█▀                            
+ *    ░█▀▄░█░█░█▀▀░░█░                            
+ *    ░▀░▀░▀▀▀░▀░░░▀▀▀                            
+ *   
+ *    ░█▀█░█▀█░█▀█░█░░░▀█▀░█▀▀░█▀█░▀█▀░▀█▀░█▀█░█▀█
+ *    ░█▀█░█▀▀░█▀▀░█░░░░█░░█░░░█▀█░░█░░░█░░█░█░█░█
+ *    ░▀░▀░▀░░░▀░░░▀▀▀░▀▀▀░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀▀░▀░▀
+ *    
+ *    ░█░░░█▀█░█░█░█▀█░█▀▀░█░█░█▀▀░█▀▄            
+ *    ░█░░░█▀█░█░█░█░█░█░░░█▀█░█▀▀░█▀▄            
+ *    ░▀▀▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░▀            
+ *    
+ *    ░█▀▀░▀█▀░█░█░█░░░█▀▀                        
+ *    ░▀▀█░░█░░░█░░█░░░█▀▀                        
+ *    ░▀▀▀░░▀░░░▀░░▀▀▀░▀▀▀                        
+ ------------------------------------------------------*/
+
+/*****----- Configuration -----*****/
+configuration {
+	modi:                       "drun,run,filebrowser,window";
+    show-icons:                 true;
+    display-drun:               "APPS";
+    display-run:                "RUN";
+    display-filebrowser:        "FILES";
+    display-window:             "WINDOW";
+	drun-display-format:        "{name}";
+	window-format:              "{w} · {c} · {t}";
+}
+
+/*****----- Global Properties -----*****/
+@import "color-map.rasi"
+@import "~/.config/rofi/special-case/image.rasi"
+* {
+    font:                        "ComicShannsMono Nerd Font 10";
+}
+
+/*****----- Main Window -----*****/
+window {
+    /* properties for window widget */
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  true;
+    width:                       1000px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    /* properties for all widgets */
+    enabled:                     true;
+    border-radius:               15px;
+    cursor:                      "default";
+    background-color:            @win-bg;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    margin:                      34% 35%;
+    enabled:                     true;
+    spacing:                     0px;
+    background-color:            @mb-bg;
+    orientation:                 horizontal;
+    children:                    [ "imagebox", "listbox" ];
+    border:                      5px;
+    border-color:                @mb-border;
+    border-radius:               30px;
+}
+
+imagebox {
+    padding:                     20px;
+    background-color:            transparent;
+    background-image:            @img;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "dummy", "mode-switcher" ];
+}
+
+listbox {
+    spacing:                     20px;
+    padding:                     20px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "message", "listview" ];
+}
+
+dummy {
+    background-color:            transparent;
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     15px;
+    border-radius:               20px;
+    background-color:            @inbar-bg;
+    text-color:                  @inbar-txt;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         " ";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+entry {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search";
+    placeholder-color:           inherit;
+}
+
+/*****----- Mode Switcher -----*****/
+mode-switcher{
+    enabled:                     true;
+    spacing:                     20px;
+    background-color:            transparent;
+    text-color:                  @msw-txt;
+}
+button {
+    padding:                     15px;
+    margin:                      5px;
+    border-radius:               20px;
+    background-color:            @msw-btn-bg;
+    font:                        "ComicShannsMono Nerd Font Bold 12";
+    text-color:                  inherit;
+    cursor:                      pointer;
+}
+button selected {
+    background-color:            @msw-btn-selected-bg;
+    text-color:                  @msw-btn-selected-txt;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     10px;
+    background-color:            transparent;
+    text-color:                  @lv-txt;
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     15px;
+    padding:                     8px;
+    border-radius:               10px;
+    background-color:            transparent;
+    text-color:                  @el-txt;
+    cursor:                      pointer;
+}
+element normal.normal {
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+element normal.urgent {
+    background-color:            @el-urgent-bg;
+    text-color:                  @el-urgent-txt;
+}
+element normal.active {
+    background-color:            @el-active-bg;
+    text-color:                  @el-active-txt;
+}
+element selected.normal {
+    background-color:            @el-selected-bg;
+    text-color:                  @el-selected-txt;
+}
+element selected.urgent {
+    background-color:            @el-selected-urgent-bg;
+    text-color:                  @el-selected-urgent-txt;
+}
+element selected.active {
+    background-color:            @el-selected-active-bg;
+    text-color:                  @el-selected-active-txt;
+}
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        32px;
+    cursor:                      inherit;
+}
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+/*****----- Message -----*****/
+message {
+    background-color:            transparent;
+}
+textbox {
+    padding:                     15px;
+    border-radius:               10px;
+    background-color:            @tb-bg;
+    text-color:                  @tb-txt;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+error-message {
+    padding:                     15px;
+    border-radius:               20px;
+    background-color:            @err-msg-bg;
+    text-color:                  @err-msg-txt;
+}

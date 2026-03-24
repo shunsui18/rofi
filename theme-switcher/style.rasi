@@ -1,0 +1,154 @@
+/**
+ *    ░█▀▄░█▀█░█▀▀░▀█▀                    
+ *    ░█▀▄░█░█░█▀▀░░█░                    
+ *    ░▀░▀░▀▀▀░▀░░░▀▀▀                    
+ *    
+ *    ░▀█▀░█░█░█▀▀░█▄█░█▀▀░░░█▀▀░█░█░▀█▀░▀█▀░█▀▀░█░█░█▀▀░█▀▄
+ *    ░░█░░█▀█░█▀▀░█░█░█▀▀░░░▀▀█░█▄█░░█░░░█░░█░░░█▀█░█▀▀░█▀▄
+ *    ░░▀░░▀░▀░▀▀▀░▀░▀░▀▀▀░░░▀▀▀░▀░▀░▀▀▀░░▀░░▀▀▀░▀░▀░▀▀▀░▀░▀
+ * 
+ *    ░█▀▀░▀█▀░█░█░█░░░█▀▀                
+ *    ░▀▀█░░█░░░█░░█░░░█▀▀                
+ *    ░▀▀▀░░▀░░░▀░░▀▀▀░▀▀▀                
+ ---------------------------------------------*/
+
+/*****----- Configuration -----*****/
+configuration {
+	modi:                       "drun";
+    show-icons:                 true;
+    display-drun:               "";
+    display-run:                "";
+    display-filebrowser:        "";
+    display-window:             "";
+	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+	window-format:              "{w}   {c}   {t}";
+}
+
+/*****----- Global Properties -----*****/
+@import "~/.config/rofi/theme-switcher/color-map.rasi"
+
+* {
+    font:                        "ComicShannsMono Nerd Font Bold 12";
+}
+
+/*****----- Main Window -----*****/
+window {
+    /* properties for window widget */
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  true;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    /* properties for all widgets */
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    cursor:                      "default";
+    background-color:            @win-bg;
+    background-image:            url("~/.config/rofi/images/flowers-1.png", width);
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     20px;
+    padding:                     40px;
+    margin:                      30% 33%;
+    background-color:            @mb-bg;
+    border:                      5px;
+    border-radius:               20px;
+    border-color:                @mb-border;
+    children:                    [ "inputbar", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px 50px 0px 50px;
+    padding:                     10px;
+    border:                      3px;
+    border-radius:               30px;
+    background-color:            @inbar-bg;
+    border-color:                @inbar-border;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    padding:                     8px 11px;
+    border-radius:               8px;
+    background-color:            transparent;
+    text-color:                  @inbar-tb-txt;
+    str:                         "";
+}
+entry {
+    enabled:                     true;
+    padding:                     8px 12px;
+    border:                      0px;
+    background-color:            transparent;
+    text-color:                  @inbar-entry-txt;
+    cursor:                      text;
+    placeholder:                 "Search Themes...";
+    placeholder-color:           @inbar-entry-ph;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     10px;
+    margin:                      0px 100px 0px 100px;
+    padding:                     20px;
+    background-color:            @lv-bg;
+    border-radius:               20px;
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     10px 20px;
+    border-radius:               30px;
+    background-color:            transparent;
+    text-color:                  @el-txt;
+    cursor:                      pointer;
+}
+element selected.normal {
+    enabled:                     true;
+    background-color:            @el-selected-bg;
+    text-color:                  @el-selected-txt;
+    border:                      3px;
+    border-color:                @el-selected-border;
+}
+element-icon {
+    background-color:            transparent;
+    size:                        60px;
+    cursor:                      inherit;
+}
+element-text {
+    font:                        "ComicShannsMono Nerd Font 12";
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    border:                      0px 0px 2px 0px;
+    border-color:                @el-txt-border;
+}
