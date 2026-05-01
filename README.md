@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/shunsui18/yozakura/refs/heads/main/resources/icons/icon-animated.svg" alt="Yozakura" width="100"/>
+<img src="https://raw.githubusercontent.com/shunsui18/rofi/refs/heads/main/assets/yozakura-yoru-rofi-app-launcher-preview.png" alt="Yozakura" width="100"/>
 
 # 夜桜 Yozakura — Rofi Theme
 
@@ -72,20 +72,26 @@ A handcrafted pastel color palette for [rofi](https://github.com/davatorium/rofi
 Run without any arguments to launch the guided menu:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/shunsui18/yozakura/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/shunsui18/rofi/main/install.sh)
 ```
 
-The installer will walk you through picking a flavor:
+The installer will walk you through picking a flavor and whether to back up your existing config:
 
 ```
-  夜桜 Yozakura — Rofi Theme Installer
-  ──────────────────────────────────────
+  夜桜 Yozakura — Rofi Config Installer
+  ────────────────────────────────────────
 
   Select a flavor:
-  1) 🌸  Yoru  (night — deep moonlit background)
+  1) 🌸  Yoru  (night — deep moonlit palette)
   2) ☀️   Hiru  (day  — warm ivory canvas)
 
   Flavor [1/2] (default: 1): _
+
+  Back up existing ~/.config/rofi?
+  1) Yes  (saves current config to ~/.config/rofi.bak)
+  2) No   (existing files will be overwritten)
+
+  Backup [1/2] (default: 1): _
 ```
 
 ---
@@ -95,12 +101,13 @@ The installer will walk you through picking a flavor:
 Skip the menu entirely by passing flags directly:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/shunsui18/yozakura/main/install.sh) --theme hiru
+bash <(curl -fsSL https://raw.githubusercontent.com/shunsui18/rofi/main/install.sh) --theme hiru --backup yes
 ```
 
 | Flag | Values | Description |
 |---|---|---|
 | `--theme` | `yoru` \| `hiru` | Theme flavor to activate |
+| `--backup` | `yes` \| `no` | Back up existing `~/.config/rofi` before installing |
 | `-h`, `--help` | — | Show help |
 
 ---
@@ -111,13 +118,13 @@ If you prefer to clone and run locally:
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/shunsui18/yozakura.git && cd yozakura
+git clone https://github.com/shunsui18/rofi.git && cd rofi
 
 # 2a. Interactive
-./install.sh
+bash install.sh
 
 # 2b. Or with flags
-./install.sh --theme hiru
+bash install.sh --theme hiru --backup yes
 ```
 
 ---
@@ -125,11 +132,12 @@ git clone https://github.com/shunsui18/yozakura.git && cd yozakura
 ## ✦ What the Installer Does
 
 1. **Menu or flags** — launches an interactive prompt if no arguments are given, or skips straight to install when flags are provided
-2. **Self-locates** — resolves its own path regardless of where it is called from or whether it is symlinked
+2. **Self-locates** — resolves its own path correctly whether run locally or via `bash <(curl ...)`
 3. **Validates** — confirms the requested theme files exist before touching anything
-4. **Copies** all theme files into `$HOME/.config/rofi/`, creating the directory if needed
-5. **Symlinks** `colors.rasi` to the selected flavor's color file, so switching themes updates all modules at once
-6. **Fails gracefully** — descriptive error messages if arguments are invalid or a theme file is not found
+4. **Optionally backs up** your existing `~/.config/rofi` to `~/.config/rofi.bak`
+5. **Copies** all theme files into `$HOME/.config/rofi/`, creating the directory if needed
+6. **Symlinks** `colors.rasi` to the selected flavor's color file, so switching themes updates all modules at once
+7. **Fails gracefully** — descriptive error messages if arguments are invalid or a theme file is not found
 
 ---
 
@@ -146,7 +154,7 @@ git clone https://github.com/shunsui18/yozakura.git && cd yozakura
 ## ✦ File Structure
 
 ```
-yozakura/
+rofi/
 ├── assets/
 │   ├── yozakura-yoru-rofi-app-launcher-preview.png
 │   ├── yozakura-hiru-rofi-app-launcher-preview.png
