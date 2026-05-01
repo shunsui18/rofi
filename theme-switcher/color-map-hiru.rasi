@@ -19,19 +19,19 @@
     win-bg:                    @window-background;
     
     mb-bg:                     @base;
-    mb-border:                 @starlight;
+    mb-border:                 @blush;
 
     inbar-bg:                  @rim;
-    inbar-border:              @amber;
+    inbar-border:              @petal;
     inbar-tb-txt:              @seafoam;
     inbar-entry-txt:           @text;
     inbar-entry-ph:            @muted;
 
-    lv-bg:                     @moss;
+    lv-bg:                     @sky;
 
-    el-txt:                    @raised;
-    el-selected-bg:            @lantern;
-    el-selected-txt:           @raised;
-    el-selected-border:        @ember;
-    el-txt-border:             @lantern;
+    el-txt:                    @text;
+    el-selected-bg:            @select;
+    el-selected-txt:           @text;
+    el-selected-border:        @base;
+    el-txt-border:             @select;
 }

@@ -25,7 +25,7 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import "~/.config/rofi/clipboard/color-map.rasi"
+@import "~/.config/rofi/theme-switcher/color-map.rasi"
 
 * {
     font:                        "ComicShannsMono Nerd Font Bold 12";
@@ -47,7 +47,6 @@ window {
     padding:                     0px;
     cursor:                      "default";
     background-color:            @win-bg;
-    background-image:            url("~/.config/rofi/images/flowers-1.png", width);
 }
 
 /*****----- Main Box -----*****/

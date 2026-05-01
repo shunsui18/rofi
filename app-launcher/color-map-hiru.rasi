@@ -21,7 +21,7 @@
     win-bg:                   @window-background;
 
     mb-bg:                    @base;
-    mb-border:                @starlight;
+    mb-border:                @sky;
     
     inbar-bg:                 @rim;
     inbar-txt:                @text;
@@ -36,13 +36,13 @@
     el-txt:                   @text;
     el-urgent-bg:             @crimson;
     el-urgent-txt:            @raised;
-    el-active-bg:             @amber;
+    el-active-bg:             @moss;
     el-active-txt:            @raised;
     el-selected-bg:           @lantern;
     el-selected-txt:          @raised;
     el-selected-urgent-bg:    @crimson;
     el-selected-urgent-txt:   @raised;
-    el-selected-active-bg:    @seafoam;
+    el-selected-active-bg:    @lantern;
     el-selected-active-txt:   @raised;
 
     tb-bg:                    @petal;

@@ -42,7 +42,7 @@
     el-selected-txt:          @raised;
     el-selected-urgent-bg:    @crimson;
     el-selected-urgent-txt:   @raised;
-    el-selected-active-bg:    @seafoam;
+    el-selected-active-bg:    @lantern;
     el-selected-active-txt:   @raised;
 
     tb-bg:                    @petal;
