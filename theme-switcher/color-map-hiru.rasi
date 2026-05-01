@@ -1,0 +1,37 @@
+/**
+ *    ░█▀▄░█▀█░█▀▀░▀█▀                    
+ *    ░█▀▄░█░█░█▀▀░░█░                    
+ *    ░▀░▀░▀▀▀░▀░░░▀▀▀                    
+ *   
+ *    ░▀█▀░█░█░█▀▀░█▄█░█▀▀░░░█▀▀░█░█░▀█▀░▀█▀░█▀▀░█░█░█▀▀░█▀▄
+ *    ░░█░░█▀█░█▀▀░█░█░█▀▀░░░▀▀█░█▄█░░█░░░█░░█░░░█▀█░█▀▀░█▀▄
+ *    ░░▀░░▀░▀░▀▀▀░▀░▀░▀▀▀░░░▀▀▀░▀░▀░▀▀▀░░▀░░▀▀▀░▀░▀░▀▀▀░▀░▀
+ *   
+ *    ░█▀▀░█▀█░█░░░█▀█░█▀▄░░░░░█▄█░█▀█░█▀█
+ *    ░█░░░█░█░█░░░█░█░█▀▄░▄▄▄░█░█░█▀█░█▀▀
+ *    ░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░░░░░▀░▀░▀░▀░▀░░
+ ---------------------------------------------*/
+ 
+@import "~/.config/rofi/colors.rasi"
+@import "~/.config/rofi/special-case/window-background.rasi"
+
+* {
+    win-bg:                    @window-background;
+    
+    mb-bg:                     @base;
+    mb-border:                 @starlight;
+
+    inbar-bg:                  @rim;
+    inbar-border:              @amber;
+    inbar-tb-txt:              @seafoam;
+    inbar-entry-txt:           @text;
+    inbar-entry-ph:            @muted;
+
+    lv-bg:                     @moss;
+
+    el-txt:                    @raised;
+    el-selected-bg:            @lantern;
+    el-selected-txt:           @raised;
+    el-selected-border:        @ember;
+    el-txt-border:             @lantern;
+}

@@ -218,21 +218,34 @@ chmod +x "$ROFI_CONF_DIR/scripts/"*
 # Create the colors.rasi symlink pointing at the chosen flavor
 # ---------------------------------------------------------------------------
 SYMLINK_PATH="$ROFI_CONF_DIR/colors.rasi"
-SYMLINK_TARGET="styles/colors-${FLAVOR}.rasi"
+SYMLINK_TARGET="styles/colors-${FLAVOR}.rasi"   # relative — portable
 
 info "Setting colors.rasi → $SYMLINK_TARGET"
 [[ -e "$SYMLINK_PATH" || -L "$SYMLINK_PATH" ]] && rm -f "$SYMLINK_PATH"
 ln -s "$SYMLINK_TARGET" "$SYMLINK_PATH"
 
 # ---------------------------------------------------------------------------
+# Create color-map.rasi symlinks in app-launcher/ and theme-switcher/
+# ---------------------------------------------------------------------------
+COLOR_MAP_TARGET="color-map-${FLAVOR}.rasi"   # relative — portable
+
+for module in app-launcher theme-switcher; do
+    CM_SYMLINK="$ROFI_CONF_DIR/$module/color-map.rasi"
+    info "Setting $module/color-map.rasi → $COLOR_MAP_TARGET"
+    [[ -e "$CM_SYMLINK" || -L "$CM_SYMLINK" ]] && rm -f "$CM_SYMLINK"
+    ln -s "$COLOR_MAP_TARGET" "$CM_SYMLINK"
+done
+
+# ---------------------------------------------------------------------------
 # Summary
 # ---------------------------------------------------------------------------
 echo
 echo -e "${DIM}  ────────────────────────────────────────${RESET}"
-success "${BOLD}Flavor     ${RESET}: yozakura-${FLAVOR}"
-success "${BOLD}colors.rasi${RESET}: → $SYMLINK_TARGET"
-success "${BOLD}Backup     ${RESET}: $( [[ "$BACKUP" == "yes" ]] && echo "$BACKUP_DIR" || echo "none" )"
-success "${BOLD}Config dir ${RESET}: $ROFI_CONF_DIR"
+success "${BOLD}Flavor        ${RESET}: yozakura-${FLAVOR}"
+success "${BOLD}colors.rasi   ${RESET}: → $SYMLINK_TARGET"
+success "${BOLD}color-map.rasi${RESET}: → $COLOR_MAP_TARGET"
+success "${BOLD}Backup        ${RESET}: $( [[ "$BACKUP" == "yes" ]] && echo "$BACKUP_DIR" || echo "none" )"
+success "${BOLD}Config dir    ${RESET}: $ROFI_CONF_DIR"
 echo -e "${DIM}  ────────────────────────────────────────${RESET}"
 echo
 echo -e "  ${PINK}Done. Re-launch Rofi to apply the theme.${RESET}"
