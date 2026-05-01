@@ -30,7 +30,6 @@ configuration {
 
 /*****----- Global Properties -----*****/
 @import "color-map.rasi"
-@import "~/.config/rofi/special-case/image.rasi"
 * {
     font:                        "ComicShannsMono Nerd Font 10";
 }
@@ -69,7 +68,7 @@ mainbox {
 imagebox {
     padding:                     20px;
     background-color:            transparent;
-    background-image:            url("icon.png");
+    background-image:            @img;
     orientation:                 vertical;
     children:                    [ "inputbar", "dummy", "mode-switcher" ];
 }

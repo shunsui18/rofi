@@ -50,4 +50,6 @@
 
     err-msg-bg:               @crimson;
     err-msg-txt:              @raised;
+
+    img:                      url("~/.config/rofi/app-launcher/icon.png", height);
 }
