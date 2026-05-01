@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/shunsui18/rofi/refs/heads/main/assets/yozakura-yoru-rofi-app-launcher-preview.png" alt="Yozakura" width="100"/>
+<img src="https://raw.githubusercontent.com/shunsui18/yozakura/refs/heads/main/resources/icons/icon-animated.svg" alt="Yozakura" width="100"/>
 
 # 夜桜 Yozakura — Rofi Theme
 
