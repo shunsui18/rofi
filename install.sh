@@ -142,10 +142,22 @@ if [[ "$BACKUP" != "yes" && "$BACKUP" != "no" ]]; then
 fi
 
 # ---------------------------------------------------------------------------
-# Resolve script location & validate source layout
+# Resolve script location — works both locally and via bash <(curl ...)
 # ---------------------------------------------------------------------------
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ "${BASH_SOURCE[0]}" == /proc/self/fd/* || "${BASH_SOURCE[0]}" == /dev/fd/* ]]; then
+    REPO_ROOT="$(mktemp -d)"
+    trap 'rm -rf "$REPO_ROOT"' EXIT
+    info "Fetching repo into temp dir..."
+    git clone --depth=1 https://github.com/shunsui18/rofi.git "$REPO_ROOT" &>/dev/null
+    success "Repo fetched."
+    echo
+else
+    REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+fi
 
+# ---------------------------------------------------------------------------
+# Validate source layout
+# ---------------------------------------------------------------------------
 REQUIRED_DIRS=(app-launcher clipboard scripts styles theme-switcher)
 for dir in "${REQUIRED_DIRS[@]}"; do
     if [[ ! -d "$REPO_ROOT/$dir" ]]; then
@@ -206,10 +218,9 @@ chmod +x "$ROFI_CONF_DIR/scripts/"*
 # Create the colors.rasi symlink pointing at the chosen flavor
 # ---------------------------------------------------------------------------
 SYMLINK_PATH="$ROFI_CONF_DIR/colors.rasi"
-SYMLINK_TARGET="styles/colors-${FLAVOR}.rasi"   # relative — portable
+SYMLINK_TARGET="styles/colors-${FLAVOR}.rasi"
 
 info "Setting colors.rasi → $SYMLINK_TARGET"
-# Remove any existing file or symlink at that path
 [[ -e "$SYMLINK_PATH" || -L "$SYMLINK_PATH" ]] && rm -f "$SYMLINK_PATH"
 ln -s "$SYMLINK_TARGET" "$SYMLINK_PATH"
 
