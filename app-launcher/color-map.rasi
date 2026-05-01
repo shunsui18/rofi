@@ -17,7 +17,6 @@
  -----------------------------------------------------*/
 
 @import "~/.config/rofi/colors.rasi"
-@import "special-case/window-background.rasi"
 * {
     win-bg:                   @window-background;
 
