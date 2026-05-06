@@ -72,7 +72,7 @@ A handcrafted pastel color palette for [rofi](https://github.com/davatorium/rofi
 Run without any arguments to launch the guided menu:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/shunsui18/rofi/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/shunsui18/yozakura-rofi/main/install.sh)
 ```
 
 The installer will walk you through picking a flavor and whether to back up your existing config:
@@ -101,7 +101,7 @@ The installer will walk you through picking a flavor and whether to back up your
 Skip the menu entirely by passing flags directly:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/shunsui18/rofi/main/install.sh) --theme hiru --backup yes
+bash <(curl -fsSL https://raw.githubusercontent.com/shunsui18/yozakura-rofi/main/install.sh) --theme hiru --backup yes
 ```
 
 | Flag | Values | Description |
@@ -118,7 +118,7 @@ If you prefer to clone and run locally:
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/shunsui18/rofi.git && cd rofi
+git clone https://github.com/shunsui18/yozakura-rofi.git && cd yozakura-rofi
 
 # 2a. Interactive
 bash install.sh
@@ -154,7 +154,7 @@ bash install.sh --theme hiru --backup yes
 ## ✦ File Structure
 
 ```
-rofi/
+yozakura-rofi/
 ├── assets/
 │   ├── yozakura-yoru-rofi-app-launcher-preview.png
 │   ├── yozakura-hiru-rofi-app-launcher-preview.png
